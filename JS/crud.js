@@ -1,5 +1,4 @@
 ﻿function register() {
-
     var stdObj = {
         UserName: $('#UserName').val(),
         Password: $('#Password').val(),
