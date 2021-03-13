@@ -1,0 +1,46 @@
+﻿@using MVCCRUDSHOP.ViewModels
+@model ProductViewModel
+@{
+    ViewBag.Title = "Add";
+}
+
+<h2>Add Category</h2>
+
+<div class="container">
+    <input type="hidden" value="@Model.CategoryId">
+
+    <div>
+        <label for="Category">Category Name</label>
+    </div>
+    <div>                
+            <select id="CategoryId" name="CategoryId" class="btn btn-primary dropdown-toggle">
+                <option selected="" value="0" class="">Select Category</option>
+                @foreach (var item in Model.Categorylist)
+                {
+                    <option value="@item.CategoryId">@item.CategoryName</option>
+                }
+            </select>
+    </div>
+
+    <div>
+        <label for="Price">Product Name</label>
+    </div>
+    <div class="form-group">
+        <input type="text" name="ProductName" id="ProductName" class="form-control" placeholder="Enter Product Name">
+    </div>
+
+    <div>
+        <label for="Price">Product Price</label>
+    </div>
+    <div>
+        <input type="text" name="ProductPrice" id="ProductPrice" class="form-control" placeholder="Enter Product Price">
+    </div>
+    <br />
+    <div>
+        <button type="button" onclick="Addproduct()" class="btn btn-success">Create</button>
+    </div>
+</div>
+        <div>
+            <a href="Product/Index" class="btn btn-link">Back To List</a>
+        </div>
+ 

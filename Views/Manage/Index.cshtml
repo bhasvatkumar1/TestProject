@@ -1,0 +1,28 @@
+﻿@using MVCCRUDSHOP.Controllers
+@model List<MVCCRUDSHOP.Models.User>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>
+    Index   
+</h2>
+<table>
+    <tr>
+        <th>Username</th>
+        <th>Role</th>
+    </tr>
+    @foreach (var user in Model)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>
+                @{
+                    var roleId = user.UserRoles != null && user.UserRoles.Any() ? user.UserRoles.First().RoleId : (short)2;
+                }
+                @Html.DropDownList(string.Format("User_{0}", user.UserId), ListProvider.GetRoles(roleId), new { })
+                <input type="button" data-id="@user.UserId" value="set" class="btn-update"/>
+            </td>
+        </tr>
+    }
+</table>

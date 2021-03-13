@@ -1,0 +1,34 @@
+﻿@using MVCCRUDSHOP.ViewModels
+@model CategoryViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Category</h2>
+
+<html>
+<body>
+
+    <input type="hidden" value="@Model.CategoryId" name="CategoryId" id="CategoryId">
+
+    <div class="container">
+
+        <div class="form-group">
+            <label for="Name">Category Name</label>
+        </div>
+        <div class="form-group">
+            <input type="text" value="@Model.CategoryName" name="CategoryName" id="CategoryName">
+        </div>
+
+        <div class="form-group">
+            <button type="submit" onclick="Update()">Save</button>
+
+        </div>
+
+    </div>
+    @*</fieldset>
+        </form>*@
+</body>
+</html>
+
