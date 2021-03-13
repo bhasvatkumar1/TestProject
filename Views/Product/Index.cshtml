@@ -1,0 +1,67 @@
+﻿@model IEnumerable<MVCCRUDSHOP.ViewModels.ProductViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<p>
+    @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+    {
+        <a href="/Product/Add" class="btn btn-primary">Create New</a><br>
+    }
+</p>
+<table class="table">
+    <tr>
+        @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+        {
+            <th>
+                Product Id
+            </th>
+        }
+        <th>
+            Category Name
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Product Price
+        </th>
+        @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+        {
+            <th>
+                Action
+            </th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductId)
+                </td>
+            }
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            @if (User.IsInRole("SuperAdmin") || User.IsInRole("Admin"))
+            {
+            <td>
+                <a href="/Product/Edit/@item.ProductId" class="btn btn-info">Edit</a>|
+                <a href="/Product/Delete/@item.ProductId" class="btn btn-danger">Delete</a>             
+            </td>
+            }
+        </tr>
+    }
+
+</table>
